@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <!-- meta
+      <meta name="description" content="">
+      <meta name="author" content="">
+      <link rel="icon" href="../../favicon.ico">
+      -->
+    <title>TeamWatch</title>
+    <!-- Bootstrap core CSS -->
+    <link href="css/game-schedule-module.css" rel="stylesheet">
+    
+    <!-- Custom styles for this template -->
+    <link href="css/main.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+    
+    <!-- for the picture input button -->
+    <script type="text/javascript">
+      $(document).ready( function() {
+        $(document).on('change', '.btn-file :file', function() {
+          var input = $(this),
+          label = input.val().replace(/\\/g, '/').replace(/.*\//, '');
+          input.trigger('fileselect', [label]);
+        });
+      
+        $('.btn-file :file').on('fileselect', function(event, label) {
+          var input = $(this).parents('.input-group').find(':text'),
+          log = label;
+        });
+      
+        function readURL(input) {
+          if (input.files && input.files[0]) {
+            var reader = new FileReader();
+                
+            reader.onload = function (e) {
+              $('#img-upload').attr('src', e.target.result);
+            }
+                
+            reader.readAsDataURL(input.files[0]);
+          }
+        }
+      
+        $("#imgInp").change(function(){
+          readURL(this);
+        });   
+      });
+    </script>
+  </head>
+  
+  <body class="with-nav">
+    <!-- nav bar -->
+    <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation" onclick="toggleNav()">
+      <span class="fa fa-bars fa-lg light"></span>
+      </button>
+      <a class="navbar-brand" href="view-game-schedule.html"><img class="mobile-hidden" src="images/logo.png" alt="teamwatch logo"><img class="desktop-hidden" src="images/logo-small.png" alt="teamwatch logo"></a>
+      <!-- desktop-hidden navbar button -->
+      <a href="view-game-schedule.html" class="btn btn-primary desktop-hidden" role="button"><span class="fa fa-times fa-lg light"></span></a>
+      <div class="collapse navbar-collapse" id="navbarCollapse">
+        <ul class="navbar-nav mr-auto">
+          <li class="nav-item">
+            <a class="nav-link" href="teamstats.html">Team Stats</a>
+          </li>
+          <li class="nav-item dropdown active">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" onclick="toggleDropdown()">Matches</a>
+            <div id="navbarDropdownMenu" class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+              <a class="dropdown-item" href="upcomingMatch.html">Upcoming Matches</a>
+              <a class="dropdown-item" href="view-game-schedule.html">All Matches</a>
+            </div>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="record-match-stats.html">Record Match Stats</a>
+          </li>
+          <li class="nav-item desktop-hidden">
+            <a class="nav-link" onclick="handleLogout()">Log Out</a>
+          </li>
+        </ul>
+        <span class="mobile-hidden light"><a onclick="handleLogout()" class="btn btn-primary" role="button">Log Out</a></span>
+      </div>
+    </nav>
+    
+    <main role="main" class="container mt-3 mt-md-1">
+      <div class="row justify-content-center">
+        <form class="jumbotron col-md-6 col-sm-12 mt-3 mt-md-5 bg-gray">
+          <legend class="edit-match-title">Add A New Player</legend>
+          <div class="row">
+            <div class="col-sm-4">
+              <div class="form-horizontal">
+                <img id='img-upload' class="profile-img"/>
+              </div>
+            </div>
+            <div class="col-sm-6">
+              <label for="imgInp">
+                Select Picture
+              </label>
+              <input type="file" id="imgInp">
+            </div>
+          </div>
+          
+          <div class="row">
+            <div class="col-sm-4">
+              <label for="addPlayerFName">First Name:</label>
+            </div>
+            <div class="col-sm-6">
+              <input type="text" class="form-control" id="addPlayerFName" placeholder="First name">
+            </div>
+          </div>
+          
+          <div class="row">
+            <div class="col-sm-4">
+              <label for="addPlayerLName">Last Name:</label>
+            </div>
+            <div class="col-sm-6">
+              <input type="text" class="form-control" id="addPlayerLName" placeholder="Last name">
+            </div>
+          </div>
+          
+          <div class="row">
+            <div class="col-sm-4">
+              <label for="addPlayerEmail">Email:</label><br/>
+            </div>
+            <div class="col-sm-6">
+              <input type="email" class="form-control" id="addPlayerEmail" placeholder="Email">
+            </div>
+          </div>
+          
+          <div class="row">
+            <div class="col-sm-4">
+              <label for="addPlayerDOB">D.O.B:</label>
+            </div>
+            <div class="col-sm-6">
+              <input type="date" class="form-control" id="addPlayerDOB" placeholder="Date of Birth">
+            </div>
+          </div>
+          
+          <div class="row">
+            <div class="col-sm-4">
+              <label for="addPlayerJersey">Jersey #:</label>
+            </div>
+            <div class="col-sm-6">
+              <input type="number" class="form-control" id="addPlayerJersey" placeholder="Jersey Number">
+            </div>
+          </div>
+          
+          <div class="row">
+            <div class="col-sm-4">
+              <label for="addPlayerPosition">Position:</label>
+            </div>
+            <div class="col-sm-6">
+              <select class="form-control" id="addPlayerPosition">
+                <option>Forward</option>
+                <option>Striker</option>
+                <option>Defensive midfielder</option>
+                <option>Left midfielder</option>
+                <option>Right midfielder</option>
+                <option>Left back</option>
+                <option>Right back</option>
+                <option>Sweeper</option>
+                <option>Stopper</option>
+                <option>Goalkeeper</option>
+              </select>
+            </div>
+          </div>
+          
+          <div class="form-check">
+            <label class="form-check-label">
+            <input type="checkbox" class="form-check-input" id="captainCheck">Captain
+            </label>
+          </div>
+          
+          <button type="button" onclick="handleAddPlayer()" class="btn btn-primary">Submit</button>
+        </form>
+      </div>
+    </main>
+    
+    <script src="https://www.gstatic.com/firebasejs/4.6.2/firebase.js"></script>
+    <script src="js/firebase.js"></script>
+    <script src="js/playersCrud.js"></script>
+    <script src="js/navbar.js"></script>
+    <script src="js/logOut.js"></script>  
+  </body>
+    <!-- Evaluations: 3G Connection with disabled caching 
+    15 requests
+    489KB Transferred
+    DOMContentLoaded: 3.71s
+    Load: 5.47s
+    -->    
+</html>

@@ -1,0 +1,190 @@
+hr.scheduleHr,
+img.logo {
+    width: 100%
+}
+
+.btn-lg,
+.btn-primary {
+    border-color: #013369
+}
+
+* {
+    color: #333
+}
+
+.btn-lg,
+span.light {
+    color: #fff
+}
+
+.bg-dark {
+    background-color: #013369!important
+}
+
+.jumbotron {
+    background-color: #eee
+}
+
+form.jumbotron {
+    background-color: #fff
+}
+
+.btn-lg,
+.btn-primary {
+    background-color: #013369
+}
+
+body.with-nav {
+    padding-top: 4.5rem
+}
+
+img.logo {
+    display: block;
+    margin-top: 1.5rem;
+    margin-bottom: 1.5rem
+}
+
+div#scheduleContainer {
+    display: flex;
+    text-align: center;
+    justify-content: center;
+    flex-direction: column
+}
+
+.dontDisplay {
+    display: none
+}
+
+.makeInvisible {
+    visibility: hidden
+}
+
+p.eventField {
+    margin: auto
+}
+
+.signUp {
+    margin: 0 0 0 20px
+}
+
+.btn-lg {
+    width: 50%;
+    margin: .5em
+}
+
+.always-show {
+    display: inline-block
+}
+
+h3.edit-match-title {
+    width: 100%;
+    text-align: center
+}
+
+.player-padding {
+    margin: 0 1rem 1rem
+}
+
+.btn-file {
+    position: relative;
+    overflow: hidden
+}
+
+.btn-file input[type=file] {
+    position: absolute;
+    top: 0;
+    right: 0;
+    min-width: 100%;
+    min-height: 100%;
+    font-size: 100px;
+    filter: alpha(opacity=0);
+    outline: 0;
+    background-color: #013369;
+    cursor: inherit;
+    display: block
+}
+
+.profile-img {
+    border-radius: 50%;
+    width: 100px;
+    height: 100px;
+    content: url(../images/d-profile.png);
+    display: block
+}
+
+.add-player-btn-delete {
+    background-color: #d70101
+}
+
+.mobile-hidden {
+    display: none
+}
+
+.desktop-hidden {
+    display: inline-block
+}
+
+.btn-danger {
+    color: #fff;
+    background-color: #8E001C;
+    border-color: #8E001C
+}
+
+.navbar-toggler {
+    border: none
+}
+
+.btn:hover {
+    background-color: #054d9d;
+    border-color: #023f82
+}
+
+.btn-danger:hover {
+    background-color: #B90D2F;
+    border-color: #A20726
+}
+
+.navbar-brand>img {
+    height: 2rem;
+    padding: 0;
+    width: auto
+}
+
+.btn.disabled,
+.btn:disabled {
+    background-color: #1d2227;
+    border-color: #323a43
+}
+
+.jumbotron.bg-gray {
+    background-color: #eee
+}
+
+.show {
+    display: block
+}
+
+@media only screen and (min-width:768px) {
+    img.logo {
+        width: 65%;
+        margin: auto
+    }
+    hr.scheduleHr {
+        width: 30%!important
+    }
+    .makeInvisible {
+        visibility: hidden
+    }
+    .always-show {
+        display: inline-block
+    }
+    .dontDisplay {
+        display: none
+    }
+    .mobile-hidden {
+        display: inline-block
+    }
+    .desktop-hidden {
+        display: none
+    }
+}

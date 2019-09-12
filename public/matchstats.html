@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="A roster and statistics management tool for soccer organizations.">
+    <meta name="author" content="Castro-Lin-You">
+    <link rel="icon" href="favicon.ico">
+
+    <title>TeamWatch</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="css/game-schedule-module.css" rel="stylesheet">
+    
+    <!-- FontAwesome for icons -->
+    <link rel="stylesheet" href="css/font-awesome.min.css">
+    
+    <!-- Custom styles for this template -->
+    <link href="css/main.css" rel="stylesheet">
+  </head>
+
+  <body class="with-nav">
+    
+    <!-- nav bar -->
+    <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation" onclick="toggleNav()">
+        <span class="fa fa-bars fa-lg light"></span>
+      </button>
+      <a class="navbar-brand" href="view-game-schedule.html"><img class="mobile-hidden" src="images/logo.png" alt="teamwatch logo"><img class="desktop-hidden" src="images/logo-small.png" alt="teamwatch logo"></a>
+      <!-- desktop-hidden navbar button -->
+      <a id="nav-edit-link" href="edit-match-stats.html?id=1" class="btn btn-primary makeInvisible" role="button"><span class="fa fa-pencil-square-o fa-lg light"></span></a>
+      <div class="collapse navbar-collapse" id="navbarCollapse">
+        <ul class="navbar-nav mr-auto">
+          <li class="nav-item">
+            <a class="nav-link" href="teamstats.html">Team Stats</a>
+          </li>
+          <li class="nav-item active dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" onclick="toggleDropdown()">Matches</a>
+            <div id="navbarDropdownMenu" class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+              <a class="dropdown-item" href="upcomingMatch.html">Upcoming Matches</a>
+              <a class="dropdown-item" href="view-game-schedule.html">All Matches</a>
+            </div>
+          </li>
+          <li id="match-stats-record-id" class="dontDisplay">
+            <a class="nav-link" href="record-match-stats.html">Record Match Stats</a>
+          </li>
+          <li class="nav-item desktop-hidden">
+            <a class="nav-link" onclick="handleLogout()">Log Out</a>
+          </li>
+        </ul>
+        <span class="mobile-hidden light"><a onclick="handleLogout()" class="btn btn-primary" role="button">Log Out</a></span>
+      </div>
+    </nav>
+
+    <main role="main" class="container">
+      <!-- Page Heading -->
+      <h1 id="my-team-vs-opponent" class="my-4">
+        My Team vs Opponent
+      </h1>
+      
+      <div class="row">
+        <div class="col-md-4">
+          <h3>Time</h3>
+          <p id="datetimeLabel"></p>
+        </div>
+        <div class="col-md-4">
+          <h3>Location</h3>
+          <p id="locationLabel"></p>
+        </div>
+        <div class="col-md-4">
+          <h3>Game Type</h3>
+          <p id="gameTypeLabel"></p>
+        </div>
+      </div>
+      
+      <h2>Match Stats</h2>
+      <!-- mobile-hidden add/edit button -->
+      <p class="mobile-hidden light" ><a style="display:none;" id="edit-match-stats-button" class="btn btn-primary mobile-hidden" href="edit-match-stats.html?id=1">Edit Match Stats</a></p>
+      
+      <table class="table table-striped">
+        <thead>
+          <tr>
+            <th>Property</th>
+            <th>My Team</th>
+            <th>Opponent</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <th scope="row">Foul</th>
+            <td id="foulFor">7</td>
+            <td id="foulAgainst">9</td>
+          </tr>
+          
+          <tr>
+            <th scope="row">Red Card</th>
+            <td id="redFor">1</td>
+            <td id="redAgainst">2</td>
+          </tr>
+          
+          <tr>
+            <th scope="row">Yellow Card</th>
+            <td id="yellowCardFor">6</td>
+            <td id="yellowCardAgainst">7</td>
+          </tr>
+          
+          <tr>
+            <th scope="row">Shot on Goal</th>
+            <td id="shotOnGoalFor">12</td>
+            <td id="shotOnGoalAgainst">5</td>
+          </tr>
+          
+          <tr>
+            <th scope="row">Goal</th>
+            <td id="goalFor">2</td>
+            <td id="goalAgainst">0</td>
+          </tr>
+          
+          <tr>
+            <th scope="row">Corner Kick</th>
+            <td id="cornerKicksFor">7</td>
+            <td id="cornerKicksAgainst">11</td>
+          </tr>
+          
+          <tr>
+            <th scope="row">Goal Kick</th>
+            <td id="goalKicksFor">5</td>
+            <td id="goalKicksAgainst">3</td>
+          </tr>
+          
+          <tr>
+            <th scope="row">Possession Time</th>
+            <td id="possessionTimeFor">00:54:13</td>
+            <td id="possessionTimeAgainst">00:47:52</td>
+          </tr>
+        </tbody>
+      </table>
+    </main>
+      
+  </body>
+    <script src="js/logOut.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/4.6.2/firebase.js"></script>
+    <script src="js/firebase.js"></script>
+    <script src="js/navbar.js"></script>
+    <script src="js/gameCrud.js"></script>
+    <script>handleReadMatchstats()</script>
+  <script> 
+    var userId = localStorage.getItem("user");
+    if(userId != null){
+      var query = firebase.database().ref('Users/' + userId);
+      query.once("value").then(function(snapshot) {
+        var coach = snapshot.child("coach").val();
+        var manager = snapshot.child("manager").val();
+
+        if(coach == true || manager == true){
+            var editButton = document.getElementById('edit-match-stats-button');
+            editButton.style.display = 'block';
+            document.getElementById('nav-edit-link').className = "desktop-hidden";
+            document.getElementById('match-stats-record-id').className = "nav-item";
+        }
+
+      })
+    }
+  </script>  
+  
+   <!-- Evaluations: 3G Connection with disabled caching 
+    26 requests
+    243KB Transferred
+    DOMContentLoaded: 2.85s
+    Load: 2.85s
+    -->
+</html>

@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="A roster and statistics management tool for soccer organizations.">
+    <meta name="author" content="Castro-Lin-You">
+    <link rel="icon" href="favicon.ico">
+    <title>TeamWatch</title>
+    <!-- Bootstrap core CSS -->
+    <link href="css/game-schedule-module.css" rel="stylesheet">
+    
+    <!-- FontAwesome for icons -->
+    <link rel="stylesheet" href="css/font-awesome.min.css">
+    
+    <!-- Custom styles for this template -->
+    <link href="css/main.css" rel="stylesheet">
+  </head>
+  
+  <body class="with-nav">
+    <!-- nav bar -->
+    <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation" onclick="toggleNav()">
+      <span class="fa fa-bars fa-lg light"></span>
+      </button>
+      <a class="navbar-brand" href="view-game-schedule.html"><img class="mobile-hidden" src="images/logo.png" alt="teamwatch logo"><img class="desktop-hidden" src="images/logo-small.png" alt="teamwatch logo"></a>
+      <!-- desktop-hidden navbar button -->
+      <a id="nav-edit-player" href="edit-player.html" class="btn btn-primary makeInvisible" role="button"><span class="fa fa-pencil fa-lg light"></span></a>
+      <div class="collapse navbar-collapse" id="navbarCollapse">
+        <ul class="navbar-nav mr-auto">
+          <li class="nav-item active">
+            <a class="nav-link" href="teamstats.html">Team Stats <span class="sr-only">(current)</span></a>
+          </li>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" onclick="toggleDropdown()">Matches</a>
+            <div id="navbarDropdownMenu" class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+              <a class="dropdown-item" href="upcomingMatch.html">Upcoming Matches</a>
+              <a class="dropdown-item" href="view-game-schedule.html">All Matches</a>
+            </div>
+          </li>
+          <li id="view-player-record-id" class="dontDisplay">
+            <a class="nav-link" href="record-match-stats.html">Record Match Stats</a>
+          </li>
+          <li class="nav-item desktop-hidden">
+            <a class="nav-link" onclick="handleLogout()">Log Out</a>
+          </li>
+        </ul>
+        <span class="mobile-hidden light"><a  onclick="handleLogout()" class="btn btn-primary" role="button">Log Out</a></span>
+      </div>
+    </nav>
+    
+    <main role="main" class="container">
+      <!-- mobile-hidden add/edit button -->
+      <p class="mobile-hidden light">
+        <a style="display: none;" id="edit-player-button" href="edit-player.html" onclick="getJerseyNum()" class="btn btn-primary" role="button" type="button">Edit Player</a>
+      </p>
+      
+      <div id="viewPlayerView"></div>
+      <template id=viewPlayerTemplate>
+        <!-- Player One -->
+        <div class="row">
+          <div class="col-md-4">
+            <a href="view-player.html">
+            <img style="width:400px;height:300px;" class="img-fluid rounded mb-3 mb-md-0" id="playerPicture" src="http://placehold.it/400x300" alt="Photo of Person McPerson">
+            </a>
+          </div>
+          
+          <div class="col-md-3">
+            <h3 class="viewplayerName">Person McPerson</h3>
+            <h4 class="viewplayerPosition">Forward</h4>
+            <h5 class="viewplayerJersey">Jersey #11</h5>
+          </div>
+          
+          <div class="col-md-5">
+            <table class="table table-striped">
+              <tbody>
+                <tr>
+                  <th scope="row">Date of Birth</th>
+                  <td class="viewplayerDOB">January 1, 1991</td>
+                </tr>
+                <tr>
+                  <th scope="row">Career Goals</th>
+                  <td id="viewPlayerCareerGoals">111</td>
+                </tr>
+                <tr>
+                  <th scope="row">Career Appearances</th>
+                  <td id="viewCareerAppearances">11</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </template>
+      
+      <!-- /.row -->
+      <hr>
+      
+      <!-- drop dowm -->
+      <select class="form-control" id="addPlayerPosition">
+        <option value="totalstats">Total stats</option>
+        <option value="game1">Game 1</option>
+        <option value="game2">Game 2</option>
+        <option value="game3">Game 3</option>
+      </select>
+      
+      <!-- display stats -->
+      <div id="totalstats" class="hidden">
+        <table class="table table-striped">
+          <tbody>
+            <tr>
+              <th scope="row">Foul</th>
+              <td id="player-fouls">6</td>
+            </tr>
+            
+            <tr>
+              <th scope="row">Red card</th>
+              <td id="player-red-cards">6</td>
+            </tr>
+            
+            <tr>
+              <th scope="row">Yellow card</th>
+              <td id="player-yellow-cards">6</td>
+            </tr>
+            
+            <tr>
+              <th scope="row">Shot on goal</th>
+              <td id="player-shot-on-goal">6</td>
+            </tr>
+            
+            <tr>
+              <th scope="row">Goal</th>
+              <td id="player-goals">6</td>
+            </tr>
+            
+            <tr>
+              <th scope="row">Corner kick</th>
+              <td id="player-corner-kicks">6</td>
+            </tr>
+            
+            <tr>
+              <th scope="row">Goal kick</th>
+              <td id="player-goal-kicks">6</td>
+            </tr>
+            
+            <tr>
+              <th scope="row">Penalty kick</th>
+              <td id="player-penalty-kicks">6</td>
+            </tr>
+            
+            <tr>
+              <th scope="row">Throw-in</th>
+              <td id="player-throw-ins">6</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </main>
+    
+    <script src="https://www.gstatic.com/firebasejs/4.6.2/firebase.js"></script>
+    <script src="js/firebase.js"></script>
+    <script src="js/playersCrud.js"></script>
+    <script src="js/navbar.js"></script>
+    <script>handleReadForViewPlayer()</script>
+    <script src="js/logOut.js"></script>
+  </body>
+    
+    <!-- Evaluations: 3G Connection with disabled caching 
+    18 requests
+    326KB Transferred
+    DOMContentLoaded: 2.81s
+    Load: 2.81s
+    -->
+</html>

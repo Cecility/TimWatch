@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="A roster and statistics management tool for soccer organizations.">
+    <meta name="author" content="Castro-Lin-You">
+    <link rel="icon" href="favicon.ico">
+    <title>TeamWatch</title>
+    <!-- Bootstrap core CSS -->
+    <link href="css/game-schedule-module.css" rel="stylesheet">
+    <!-- Custom styles for this template -->
+    <link href="css/main.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+  </head>
+  <body class="with-nav">
+    
+    <!-- nav bar -->
+    <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation" onclick="toggleNav()">
+      <span class="fa fa-bars fa-lg light"></span>
+      </button>
+      <a class="navbar-brand" href="view-game-schedule.html">
+      <img class="mobile-hidden" src="images/logo.png" alt="teamwatch logo">
+      <img class="desktop-hidden" src="images/logo-small.png" alt="teamwatch logo">
+      </a>
+      <!-- desktop-hidden navbar button -->
+      <a href="view-game-schedule.html" class="btn btn-primary desktop-hidden" role="button">
+      <span class="fa fa-times fa-lg light"></span>
+      </a>
+      <div class="collapse navbar-collapse" id="navbarCollapse">
+        <ul class="navbar-nav mr-auto">
+          <li class="nav-item">
+            <a class="nav-link" href="teamstats.html">Team Stats</a>
+          </li>
+          <li class="nav-item dropdown active">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" onclick="toggleDropdown()">Matches</a>
+            <div id="navbarDropdownMenu" class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+              <a class="dropdown-item" href="upcomingMatch.html">Upcoming Matches</a>
+              <a class="dropdown-item" href="view-game-schedule.html">All Matches</a>
+            </div>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="record-match-stats.html">Record Match Stats</a>
+          </li>
+          <li class="nav-item desktop-hidden">
+            <a class="nav-link" onclick="handleLogout()">Log Out</a>
+          </li>
+        </ul>
+        <span class="mobile-hidden light"><a onclick="handleLogout()" class="btn btn-primary" role="button">Log Out</a></span>
+      </div>
+    </nav>
+    
+    <main role="main" class="container mt-3 mt-md-1">
+      <div class="row justify-content-center">
+        <form class="jumbotron col-md-6 col-sm-12 mt-3 mt-md-5 bg-gray" action="view-game-schedule.html">
+          <h2 class="edit-match-title">Add A New Game</h2>
+          <!-- practice or match -->
+          <div class="form-group">
+            <div class="radio">
+              <label>
+              <input type="radio" name="status" id="status" value="Practice" checked>Practice
+              </label>
+            </div>
+            <div class="radio">
+              <label>
+              <input type="radio" name="status" id="status" value="Match">Match
+              </label>
+            </div>
+          </div>
+          
+          <div class="form-group">
+            <label for="addOpponentTeam">Opponent Team</label>
+            <input type="text" class="form-control" id="addOpponentTeam" placeholder="Opponent Team">
+          </div>
+          
+          <div class="form-group">
+            <label for="addLocation">Location</label>
+            <input type="text" class="form-control" placeholder="Location" id="addLocation">
+          </div>
+          
+          <div class="form-group">
+            <label for="addDateTime">Time</label>
+            <div>
+              <input type="datetime-local" class="form-control" value="1970-12-31T00:00:00" id="addDateTime">
+            </div>
+          </div>
+          
+          <div class="form-group">
+            <label>Status</label>
+            <div class="radio">
+              <label>
+              <input type="radio" name="gameType" id="gameType" value="Home Game" checked>Home
+              </label>
+            </div>
+            <div class="radio">
+              <label>
+              <input type="radio" name="gameType" id="gameType" value="Away Game">Away
+              </label>
+            </div>
+          </div>
+          
+          <button type="button" onclick="handleAddGame()" class="btn btn-lg center-block">Submit</button>
+        </form>
+      </div>
+    </main>
+    
+    <script src="https://www.gstatic.com/firebasejs/4.6.2/firebase.js"></script>
+    <script src="js/firebase.js"></script>
+    <script src="js/gameCrudAdd.js"></script>
+    <script src="js/navbar.js"></script>
+    <script src="js/logOut.js"></script>
+    <script>handleAddGamePage()</script>
+  </body>
+    <!-- Evaluations: 3G Connection with disabled caching 
+    15 requests
+    215KB Transferred
+    DOMContentLoaded: 2.59s
+    Load: 2.59s
+    -->
+</html>

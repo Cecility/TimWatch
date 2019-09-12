@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="A roster and statistics management tool for soccer organizations.">
+    <meta name="author" content="Castro-Lin-You">
+    <link rel="icon" href="favicon.ico">
+
+    <title>TeamWatch</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="css/login-logout.css" rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+    <link href="css/main.css" rel="stylesheet">
+  </head>
+
+  <body class="bg-dark">
+  
+    <main role="main" class="container mt-3 mt-md-5">
+      <div class="row justify-content-center">
+        <div class="col-md-12"> 
+          <img class="logo" src="images/logo.png" alt="teamwatch logo">
+        </div>
+        <form class="jumbotron col-md-6 col-sm-12 mt-3 mt-md-5">
+          <div class="form-group">
+            <label for="inputFName">First Name</label>
+            <input type="text" class="form-control" id="inputFName" placeholder="First name" required>
+          </div>
+          <div class="form-group">
+            <label for="inputLName">Last Name</label>
+            <input type="text" class="form-control" id="inputLName" placeholder="Last name" required>
+          </div>
+          <div class="form-group">
+            <label for="inputEmail">Email address</label>
+            <input type="email" class="form-control" id="inputEmail" placeholder="Email" required>
+          </div>
+          <div class="form-group">
+            <label for="inputPassword">Password</label>
+            <input type="password" class="form-control" id="inputPassword" placeholder="Password" required>
+          </div>
+          <div>
+             <input id="sign-up-coach" type="radio" name="user" value="coach" required> Coach
+             <input id="sign-up-manager" class="signUp" type="radio" name="user" value="manager" required> Manager
+             <input id="sign-up-other" class="signUp" type="radio" name="user" value="other" required> Other 
+          </div>   
+         <div class="form-check">
+            <label class="form-check-label">
+              <input type="checkbox" class="form-check-input" id="tosAgree" required>
+              I agree to the Terms of Service
+            </label>
+          </div>    
+          <button type="button" class="btn btn-primary" onclick="handleSignUp()">Submit</button>
+        </form>
+      </div>
+    </main>
+
+    <script src="https://www.gstatic.com/firebasejs/4.6.2/firebase.js"></script>
+    <script src="js/firebase.js"></script>
+    <script src="js/signup.js"></script>
+  </body>
+    <!-- Evaluations: 3G Connection with disabled caching 
+    8 requests
+    138KB Transferred
+    DOMContentLoaded: 1.76s
+    Load: 1.76s
+    -->
+</html>

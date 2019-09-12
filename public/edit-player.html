@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <!-- TODO meta
+      <meta name="description" content="">
+      <meta name="author" content="">
+      <link rel="icon" href="../../favicon.ico">
+      -->
+    <title>TeamWatch</title>
+    <!-- Bootstrap core CSS -->
+    <link href="css/game-schedule-module.css" rel="stylesheet">
+    
+    <!-- Custom styles for this template -->
+    <link href="css/main.css" rel="stylesheet">
+    
+    <!-- for the picture input button -->
+  </head>
+  
+  <body class="with-nav">
+    <!-- nav bar -->
+    <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation" onclick="toggleNav()">
+      <span class="fa fa-bars fa-lg light"></span>
+      </button>
+      <a class="navbar-brand" href="view-game-schedule.html"><img class="mobile-hidden" src="images/logo.png" alt="teamwatch logo"><img class="desktop-hidden" src="images/logo-small.png" alt="teamwatch logo"></a>
+      <!-- desktop-hidden navbar button -->
+      <a href="view-game-schedule.html" class="btn btn-primary desktop-hidden" role="button"><span class="fa fa-times fa-lg light"></span></a>
+      <div class="collapse navbar-collapse" id="navbarCollapse">
+        <ul class="navbar-nav mr-auto">
+          <li class="nav-item">
+            <a class="nav-link" href="teamstats.html">Team Stats</a>
+          </li>
+          <li class="nav-item dropdown active">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" onclick="toggleDropdown()">Matches</a>
+            <div id="navbarDropdownMenu" class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+              <a class="dropdown-item" href="upcomingMatch.html">Upcoming Matches</a>
+              <a class="dropdown-item" href="view-game-schedule.html">All Matches</a>
+            </div>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="record-match-stats.html">Record Match Stats</a>
+          </li>
+          <li class="nav-item desktop-hidden">
+            <a class="nav-link" onclick="handleLogout()">Log Out</a>
+          </li>
+        </ul>
+        <span class="mobile-hidden light"><a onclick="handleLogout()" class="btn btn-primary" role="button">Log Out</a></span>
+      </div>
+    </nav>
+    
+    <main role="main" class="container mt-3 mt-md-1">
+      <div class="row justify-content-center">
+        <form class="jumbotron col-md-6 col-sm-12 mt-3 mt-md-5 bg-gray">
+          <legend class="edit-match-title"> Edit Player</legend>
+          <div class="row">
+            <div class="col-sm-4">
+              <div class="form-horizontal">
+                <img id='img-upload' class="profile-img"/>
+              </div>
+            </div>
+            <div class="col-sm-6">
+              <label for="imgInp">
+                Select Picture
+              </label>
+              <input type="file" id="imgInp">
+            </div>
+          </div>
+          
+          <div class="row">
+            <div class="col-sm-4">
+              <label for="addPlayerFName">First Name:</label>
+            </div>
+            <div class="col-sm-6">
+              <input type="text" class="form-control" id="editPlayerFName" placeholder="First name">
+            </div>
+          </div>
+          
+          <div class="row">
+            <div class="col-sm-4">
+              <label for="addPlayerLName">Last Name:</label>
+            </div>
+            <div class="col-sm-6">
+              <input type="text" class="form-control" id="editPlayerLName" placeholder="Last name">
+            </div>
+          </div>
+          
+          <div class="row">
+            <div class="col-sm-4">
+              <label for="addPlayerEmail">Email:</label><br/>
+            </div>
+            <div class="col-sm-6">
+              <input type="email" class="form-control" id="editPlayerEmail" placeholder="Email">
+            </div>
+          </div>
+          
+          <div class="row">
+            <div class="col-sm-4">
+              <label for="addPlayerDOB">D.O.B:</label>
+            </div>
+            <div class="col-sm-6">
+              <input type="date" class="form-control" id="editPlayerDOB" placeholder="Date of Birth">
+            </div>
+          </div>
+          
+          <div class="row">
+            <div class="col-sm-4">
+              <label for="addPlayerJersey">Jersey #:</label>
+            </div>
+            <div class="col-sm-6">
+              <input type="number" class="form-control" id="editPlayerJersey" placeholder="Jersey Number">
+            </div>
+          </div>
+          
+          <div class="row">
+            <div class="col-sm-4">
+              <label for="addPlayerPosition">Position:</label>
+            </div>
+            <div class="col-sm-6">
+              <select class="form-control" id="editPlayerPosition">
+                <option>Forward</option>
+                <option>Striker</option>
+                <option>Defensive midfielder</option>
+                <option>Left midfielder</option>
+                <option>Right midfielder</option>
+                <option>Left back</option>
+                <option>Right back</option>
+                <option>Sweeper</option>
+                <option>Stopper</option>
+                <option>Goalkeeper</option>
+              </select>
+            </div>
+          </div>
+            
+          <div class="row">
+            <div class="col-sm-4">
+              <label for="foul">Fouls:</label>
+            </div>
+            <div class="col-sm-6">
+              <input type="number" class="form-control" id="p-fouls" placeholder="Number of fouls">
+            </div>
+          </div>
+            
+         <div class="row">
+            <div class="col-sm-4">
+              <label for="foul">Red Cards:</label>
+            </div>
+            <div class="col-sm-6">
+              <input type="number" class="form-control" id="p-red-cards" placeholder="Number of red cards">
+            </div>
+          </div>
+            
+         <div class="row">
+            <div class="col-sm-4">
+              <label for="foul">Yellow Cards:</label>
+            </div>
+            <div class="col-sm-6">
+              <input type="number" class="form-control" id="p-yellow-cards" placeholder="Number of yellow cards">
+            </div>
+          </div>
+            
+          <div class="row">
+            <div class="col-sm-4">
+              <label for="foul">Shots on goal:</label>
+            </div>
+            <div class="col-sm-6">
+              <input type="number" class="form-control" id="p-shots-on-goal" placeholder="Number of shots on goal">
+            </div>
+          </div>
+            
+          <div class="row">
+            <div class="col-sm-4">
+              <label for="foul">Goals:</label>
+            </div>
+            <div class="col-sm-6">
+              <input type="number" class="form-control" id="p-goals" placeholder="Number of goals">
+            </div>
+          </div>
+            
+          <div class="row">
+            <div class="col-sm-4">
+              <label for="foul">Corner Kicks:</label>
+            </div>
+            <div class="col-sm-6">
+              <input type="number" class="form-control" id="p-corner-kicks" placeholder="Number of corner kicks">
+            </div>
+          </div>
+            
+          <div class="row">
+            <div class="col-sm-4">
+              <label for="foul">Goal Kicks:</label>
+            </div>
+            <div class="col-sm-6">
+              <input type="number" class="form-control" id="p-goal-kicks" placeholder="Number of goal kicks">
+            </div>
+          </div>
+            
+          <div class="row">
+            <div class="col-sm-4">
+              <label for="foul">Penalty Kicks:</label>
+            </div>
+            <div class="col-sm-6">
+              <input type="number" class="form-control" id="p-penalty-kicks" placeholder="Number of penalty kicks">
+            </div>
+          </div>
+            
+          <div class="row">
+            <div class="col-sm-4">
+              <label for="foul">Throw Ins:</label>
+            </div>
+            <div class="col-sm-6">
+              <input type="number" class="form-control" id="p-throw-ins" placeholder="Number of throw ins">
+            </div>
+          </div>
+            
+          <div class="row">
+            <div class="col-sm-4">
+              <label for="foul">Career Appearances:</label>
+            </div>
+            <div class="col-sm-6">
+              <input type="number" class="form-control" id="editPlayerCareerAppearances" placeholder="Career Appearances">
+            </div>
+          </div>     
+            
+          <div class="form-check">
+            <label class="form-check-label">
+            <input type="checkbox" class="form-check-input" id="editCaptainCheck">Captain
+            </label>
+          </div>
+            
+          <button type="button" class="btn btn-primary" onclick="handleSave()">Save</button>
+          <button id="edit-delete-player" type="button" class="btn btn-danger dontDisplay" onclick="handleDeletePlayer()">Delete</button>
+        </form>
+      </div>
+    </main>
+    
+    <script src="https://www.gstatic.com/firebasejs/4.6.2/firebase.js"></script>
+    <script src="js/firebase.js"></script>
+    <script src="js/playersCrud.js"></script>
+    <script src="js/navbar.js"></script>
+    <script>handleEditPlayer()</script>
+    <script src="js/logOut.js"></script>   
+  </body>
+    
+    <!-- Evaluations: 3G Connection with disabled caching 
+    14 requests
+    429KB Transferred
+    DOMContentLoaded: 3.06s
+    Load: 4.78s
+    --> 
+</html>

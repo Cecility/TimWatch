@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="A roster and statistics management tool for soccer organizations.">
+    <meta name="author" content="Castro-Lin-You">
+    <link rel="icon" href="favicon.ico">
+
+    <title>TeamWatch</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="css/game-schedule-module.css" rel="stylesheet">
+    
+    <!-- FontAwesome for icons -->
+    <link rel="stylesheet" href="css/font-awesome.min.css">
+    
+    <!-- Custom styles for this template -->
+    <link href="css/main.css" rel="stylesheet">
+  </head>
+
+  <body class="with-nav">
+    <!-- nav bar -->
+    <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation" onclick="toggleNav()">
+        <span class="fa fa-bars fa-lg light"></span>
+      </button>
+      <a class="navbar-brand" href="view-game-schedule.html"><img class="mobile-hidden" src="images/logo.png" alt="teamwatch logo"><img class="desktop-hidden" src="images/logo-small.png" alt="teamwatch logo"></a>
+      <a href="view-game-schedule.html" class="btn btn-primary desktop-hidden" role="button"><span class="fa fa-times fa-lg light"></span></a>
+      <div class="collapse navbar-collapse" id="navbarCollapse">
+        <ul class="navbar-nav mr-auto">
+          <li class="nav-item">
+            <a class="nav-link" href="teamstats.html">Team Stats</a>
+          </li>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" onclick="toggleDropdown()">Matches</a>
+            <div id="navbarDropdownMenu" class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+              <a class="dropdown-item" href="upcomingMatch.html">Upcoming Matches</a>
+              <a class="dropdown-item" href="view-game-schedule.html">All Matches</a>
+            </div>
+          </li>
+          <li id="record-match-id" class="dontDisplay">
+            <a class="nav-link" href="record-match-stats.html">Record Match Stats <span class="sr-only">(current)</span></a>
+          </li>
+          <li class="nav-item desktop-hidden">
+            <a class="nav-link" onclick="handleLogout()">Log Out</a>
+          </li>
+        </ul>
+        <span class="mobile-hidden light"><a onclick="handleLogout()" class="btn btn-primary" role="button">Log Out</a></span>
+      </div>
+    </nav>
+
+    <main role="main" class="container">
+      <!-- Page Heading -->
+      <h1 class="my-md-4 my-sm-2">
+        Record Match Stats
+      </h1>
+      
+      <form class="jumbotron bg-gray" action="view-game-schedule.html">
+        <strong>
+          <div class="form-group row">
+            <label for="status-input" class="col-md-3 col-form-label">Date &amp; Time</label>
+            <div class="col-md-6">
+              <select class="form-control" id="datetimeDropdown" onClick="changeField()">
+              </select>
+            </div>
+          </div>
+        </strong>
+          
+        <strong>
+          <div class="form-group row">
+            <label for="status-input" class="col-md-3 col-form-label">Opponent</label>
+            <div class="col-md-6" id="opponentName">
+            </div>
+          </div>
+        </strong>
+        
+        <strong>
+          <div class="form-group row">
+            <label for="status-input" class="col-md-3 col-form-label">Location</label>
+            <div class="col-md-6" id="locationName">
+            </div>
+          </div>
+        </strong>
+        
+        <table class="table table-striped">
+          <thead>
+            <tr>
+              <th>Property</th>
+              <th id="us">My Team</th>
+              <th id="them">Opponent</th>
+            </tr>
+          </thead>
+          
+          <tbody>
+            <tr>
+              <th scope="row">Foul</th>
+              <td><input class="form-control" type="number" placeholder="0" id="my-foul"></td>
+              <td><input class="form-control" type="number" placeholder="0" id="their-foul"></td>
+            </tr>
+            
+            <tr>
+              <th scope="row">Red Card</th>
+              <td><input class="form-control" type="number" placeholder="0" id="my-red-card"></td>
+              <td><input class="form-control" type="number" placeholder="0" id="their-red-card"></td>
+            </tr>
+            
+            <tr>
+              <th scope="row">Yellow Card</th>
+              <td><input class="form-control" type="number" placeholder="0" id="my-yellow-card"></td>
+              <td><input class="form-control" type="number" placeholder="0" id="their-yellow-card"></td>
+            </tr>
+            
+            <tr>
+              <th scope="row">Shot on Goal</th>
+              <td><input class="form-control" type="number" placeholder="0" id="my-shot-on-goal"></td>
+              <td><input class="form-control" type="number" placeholder="0" id="their-shot-on-goal"></td>
+            </tr>
+            
+            <tr>
+              <th scope="row">Goal</th>
+              <td><input class="form-control" type="number" placeholder="0" id="my-goal"></td>
+              <td><input class="form-control" type="number" placeholder="0" id="their-goal"></td>
+            </tr>
+            
+            <tr>
+              <th scope="row">Corner Kick</th>
+              <td><input class="form-control" type="number" placeholder="0" id="my-corner-kick"></td>
+              <td><input class="form-control" type="number" placeholder="0" id="their-corner-kick"></td>
+            </tr>
+            
+            <tr>
+              <th scope="row">Goal Kick</th>
+              <td><input class="form-control" type="number" placeholder="0" id="my-goal-kick"></td>
+              <td><input class="form-control" type="number" placeholder="0" id="their-goal-kick"></td>
+            </tr>
+            
+            <tr>
+              <th scope="row">Possession Time</th>
+              <td><input class="form-control" type="text" placeholder="HH:MM:SS" value="00:00:00" id="my-corner-kick"></td>
+              <td><input class="form-control" type="text" placeholder="HH:MM:SS" value="00:00:00" id="their-corner-kick"></td>
+            </tr>
+          </tbody>
+        </table>
+        <button type="button" class="btn btn-primary btn-lg" onclick="handleUpdate()">Save</button>
+      </form>
+    </main>
+
+    <script src="https://www.gstatic.com/firebasejs/4.6.2/firebase.js"></script>
+    <script src="js/firebase.js"></script>
+    <script src="js/recordMatchCrud.js"></script>
+    <script src="js/navbar.js"></script>
+    <script src="js/logOut.js"></script> 
+    <script>handleAccessRecordMatch()</script>  
+    <script>handleChooseDate()</script>
+    <script>changeField()</script>
+  </body>
+    
+    <!-- Evaluations: 3G Connection with disabled caching 
+    15 requests
+    238KB Transferred
+    DOMContentLoaded: 2.79s
+    Load: 2.79s
+    -->
+</html>

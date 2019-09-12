@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="A roster and statistics management tool for soccer organizations.">
+    <meta name="author" content="Castro-Lin-You">
+    <link rel="icon" href="favicon.ico">
+
+    <title>TeamWatch</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="css/game-schedule-module.css" rel="stylesheet">
+    
+    <!-- FontAwesome for icons -->
+    <link rel="stylesheet" href="css/font-awesome.min.css">
+    
+    <!-- Custom styles for this template -->
+    <link href="css/main.css" rel="stylesheet">
+    </head>
+  
+    <!-- nav bar -->
+    <body class="with-nav">
+      <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation" onclick="toggleNav()">
+          <span class="fa fa-bars fa-lg light"></span>
+        </button>
+        <a class="navbar-brand" href="view-game-schedule.html"><img class="mobile-hidden" src="images/logo.png" alt="teamwatch logo"><img class="desktop-hidden" src="images/logo-small.png" alt="teamwatch logo"></a>
+        <!-- desktop-hidden navbar button -->
+        <a id="nav-edit-schedule" href="add-game.html" class="btn btn-primary makeInvisible" role="button"><span class="fa fa-calendar-plus-o fa-lg light"></span></a>
+        <div class="collapse navbar-collapse" id="navbarCollapse">
+          <ul class="navbar-nav mr-auto">
+            <li class="nav-item">
+              <a class="nav-link" href="teamstats.html">Team Stats</a>
+            </li>
+            <li class="nav-item active dropdown">
+              <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" onclick="toggleDropdown()">Matches</a>
+              <div id="navbarDropdownMenu" class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                <a class="dropdown-item" href="upcomingMatch.html">Upcoming Matches</a>
+                <a class="dropdown-item" href="view-game-schedule.html">All Matches <span class="sr-only">(current)</span></a>
+              </div>
+            </li>
+            <li id="game-schedule-record-id" class="dontDisplay">
+              <a class="nav-link" href="record-match-stats.html">Record Match Stats</a>
+            </li>
+            <li class="nav-item desktop-hidden">
+              <a class="nav-link" onclick="handleLogout()">Log Out</a>
+            </li>
+          </ul>
+          <span class="mobile-hidden light"><a onclick="handleLogout()" class="btn btn-primary" role="button">Log Out</a></span>
+        </div>
+      </nav>
+
+      <div class="container">
+        <div id="scheduleContainer" class="jumbotron col-xs-1">
+          <h1>Match Schedule</h1>
+          <!-- mobile-hidden add/edit button -->
+          <p><a id="add-new-game" class="btn btn-primary dontDisplay" href="add-game.html">Add New Game</a></p>
+          
+          <!-- populate here -->
+          <div id="viewPrevious">
+          
+          </div> 
+          
+          <template id=previousGame>
+            <article>
+              <h2 class=matchUp>&nbsp;</h2>
+              <p class=datetime>10/16 Tue at 5:00pm</p>
+              <p class=gLocation>San Diego Petco Park</p>
+              <p class=gameType>Home Game</p>
+              <a class="btn btn-primary" value="123" id="viewMatchStatsButton" onclick="saveGame(this)" href="matchstats.html">View Match Stats</a>
+              <a class="btn btn-primary" value="123" id="editScheduleButton" onclick="saveGame(this)" href="edit-game.html">Edit Schedule</a>
+              <hr>
+            </article>
+          </template>    
+
+        </div>
+      </div>  
+
+      <script src="https://www.gstatic.com/firebasejs/4.6.2/firebase.js"></script>
+      <script src="js/firebase.js"></script>
+      <script src="js/navbar.js"></script>
+      <script src="js/gameCrud.js"></script>
+      <script src="js/logOut.js"></script>
+      <script>handleViewGameSchedule()</script>
+      <script>handleAccessGameSchedule()</script>    
+    </body>
+    <!-- Evaluations: 3G Connection with disabled caching 
+    15 requests
+    236KB Transferred
+    DOMContentLoaded: 2.79s
+    Load: 2.79s
+    -->
+</html>

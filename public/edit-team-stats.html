@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <!-- TODO meta
+      <meta name="description" content="">
+      <meta name="author" content="">
+      <link rel="icon" href="../../favicon.ico">
+      -->
+    <title>TeamWatch</title>
+    <!-- Bootstrap core CSS -->
+    <link href="css/game-schedule-module.css" rel="stylesheet">
+    
+    <!-- Custom styles for this template -->
+    <link href="css/main.css" rel="stylesheet">
+    
+  </head>
+  
+  <body class="with-nav">
+    <!-- nav bar -->
+    <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation" onclick="toggleNav()">
+      <span class="fa fa-bars fa-lg light"></span>
+      </button>
+      <a class="navbar-brand" href="view-game-schedule.html"><img class="mobile-hidden" src="images/logo.png" alt="teamwatch logo"><img class="desktop-hidden" src="images/logo-small.png" alt="teamwatch logo"></a>
+      <!-- desktop-hidden navbar button -->
+      <a href="view-game-schedule.html" class="btn btn-primary desktop-hidden" role="button"><span class="fa fa-times fa-lg light"></span></a>
+      <div class="collapse navbar-collapse" id="navbarCollapse">
+        <ul class="navbar-nav mr-auto">
+          <li class="nav-item">
+            <a class="nav-link" href="teamstats.html">Team Stats</a>
+          </li>
+          <li class="nav-item dropdown active">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" onclick="toggleDropdown()">Matches</a>
+            <div id="navbarDropdownMenu" class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+              <a class="dropdown-item" href="upcomingMatch.html">Upcoming Matches</a>
+              <a class="dropdown-item" href="view-game-schedule.html">All Matches</a>
+            </div>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="record-match-stats.html">Record Match Stats</a>
+          </li>
+          <li class="nav-item desktop-hidden">
+            <a class="nav-link" onclick="handleLogout()">Log Out</a>
+          </li>
+        </ul>
+        <span class="mobile-hidden light"><a onclick="handleLogout()" class="btn btn-primary" role="button">Log Out</a></span>
+      </div>
+    </nav>
+    
+    <main role="main" class="container mt-3 mt-md-1">
+      <div class="row justify-content-center">
+        <form class="jumbotron col-md-6 col-sm-12 mt-3 mt-md-5 bg-gray">
+          <legend class="edit-match-title"> Edit Team Stats</legend>
+          <div class="row">
+            <div class="col-sm-4">
+            </div>
+          </div>
+          
+          <div class="row">
+            <div class="col-sm-4">
+              <label for="foul">Wins:</label>
+            </div>
+            <div class="col-sm-6">
+              <input type="number" class="form-control" id="edit-team-wins" placeholder="Number of wins">
+            </div>
+          </div>
+            
+         <div class="row">
+            <div class="col-sm-4">
+              <label for="foul">Loses:</label>
+            </div>
+            <div class="col-sm-6">
+              <input type="number" class="form-control" id="edit-team-loses" placeholder="Number of losses">
+            </div>
+          </div>
+            
+         <div class="row">
+            <div class="col-sm-4">
+              <label for="foul">Ties:</label>
+            </div>
+            <div class="col-sm-6">
+              <input type="number" class="form-control" id="edit-team-ties" placeholder="Number of ties">
+            </div>
+          </div>
+            
+          <div class="row">
+            <div class="col-sm-4">
+              <label for="foul">Goals For:</label>
+            </div>
+            <div class="col-sm-6">
+              <input type="number" class="form-control" id="edit-team-goals-for" placeholder="Number of goals for">
+            </div>
+          </div>
+            
+          <div class="row">
+            <div class="col-sm-4">
+              <label for="foul">Goals Against:</label>
+            </div>
+            <div class="col-sm-6">
+              <input type="number" class="form-control" id="edit-team-goals-against" placeholder="Number of goals against">
+            </div>
+          </div>
+          <button type="button" class="btn btn-primary" onclick="handleTeamStatsSave()">Save</button>
+          <button type="button" class="btn btn-danger" onclick="handleTeamStatsCancel()">Cancel</button>
+        </form>
+      </div>
+    </main>
+    
+    <script src="https://www.gstatic.com/firebasejs/4.6.2/firebase.js"></script>
+    <script src="js/firebase.js"></script>
+    <script src="js/navbar.js"></script>
+    <script src="js/logOut.js"></script>
+    <script src="js/teamStatsCrud.js"></script>
+    <script>handleTeamStatsEdit()</script>  
+  </body>
+    
+    <!-- Evaluations: 3G Connection with disabled caching 
+    13 requests
+    153KB Transferred
+    DOMContentLoaded: 1.92s
+    Load: 1.92s
+    --> 
+</html>
